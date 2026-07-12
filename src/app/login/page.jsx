@@ -7,11 +7,41 @@ import { Card, CardHeader, CardContent as CardBody, Input, Button, Label, Form }
 import { FaEnvelope, FaLock, FaGoogle } from "react-icons/fa";
 
 import Logo from "@/components/Logo";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+
 
 export default function LoginPage() {
+    const router = useRouter();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = async (data) => {
+
+        const { data: signInData, error: signInError } = await authClient.signIn.email({
+
+            email: data.email,
+            password: data.password,
+
+        })
+
+        if (signInError) {
+            toast.error("Login not succeed...")
+        }
+        else {
+            toast.success("Login succeed...")
+            router.push("/")
+        }
+
+
+    }
+
+
+
     return (
         <div>
-            <Card className="w-full max-w-md border border-white/5 bg-slate-950/70 backdrop-blur-xl shadow-2xl p-4">
+            <Card className="w-full max-w-md border border-white/5 bg-slate-950/70 backdrop-blur-xl shadow-2xl p-4 mx-auto">
                 <CardHeader className="flex flex-col gap-1 items-center pb-6 text-center">
                     <Logo />
                     <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-pink-500 bg-clip-text text-transparent">
@@ -22,27 +52,29 @@ export default function LoginPage() {
                     </p>
                 </CardHeader>
                 <CardBody className="gap-4">
-                    <Form className="space-y-4 w-full">
+                    <Form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
                         <Label htmlFor="email">
                             Email Address
                         </Label>
                         <Input
+                            {...register("email", { required: "Email is required" })}
                             id="email"
                             placeholder="john@example.com"
                             type="email"
-                            labelPlacement="outside"
-                            startContent={<FaEnvelope className="text-slate-400 text-sm" />}
+                            labelplacement="outside"
+                            startcontent={<FaEnvelope className="text-slate-400 text-sm" />}
                             className="w-full bg-slate-900/50 border-white/10 hover:border-pink-500/50 focus-within:!border-pink-500"
                         />
                         <Label htmlFor="password">
                             Password
                         </Label>
                         <Input
+                            {...register("password", { required: "Password is required" })}
                             id="password"
                             placeholder="••••••••"
                             type="password"
-                            labelPlacement="outside"
-                            startContent={<FaLock className="text-slate-400 text-sm" />}
+                            labelplacement="outside"
+                            startcontent={<FaLock className="text-slate-400 text-sm" />}
                             className="w-full bg-slate-900/50 border-white/10 hover:border-pink-500/50 focus-within:!border-pink-500"
                         />
 
@@ -65,7 +97,7 @@ export default function LoginPage() {
                         variant="bordered"
                         className="w-full border-white/10 hover:bg-white/5 hover:border-white/20 text-white font-semibold h-11"
                         radius="lg"
-                        startContent={<FaGoogle className="text-pink-500" />}
+                        startcontent={<FaGoogle className="text-pink-500" />}
                     >
                         Google Account
                     </Button>
