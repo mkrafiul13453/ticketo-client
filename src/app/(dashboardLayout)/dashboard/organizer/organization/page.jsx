@@ -1,6 +1,6 @@
 "use client";
 import DashboardHeading from '@/components/DashboardHeading';
-import { addOrganization } from '@/lib/api/organization/action';
+import { addOrganization, updateOrg } from '@/lib/api/organization/action';
 import { myOrganization } from '@/lib/api/organization/data';
 import { useSession } from '@/lib/auth-client';
 import { uploadImage } from '@/utils/uploadImage';
@@ -18,7 +18,7 @@ const Organization = () => {
     console.log(errors);
 
 
-    // Fetch Organization Data
+    // Fetch Organization Data for use it as default value
     useEffect(() => {
         const setOrgData = async () => {
             const org = await myOrganization(session.user.email);
@@ -47,13 +47,23 @@ const Organization = () => {
 
         };
 
-        const resData = await addOrganization(orgData);
-        if (resData.insertedId) {
-            toast.success('Organization added successfully');
-            redirect('/dashboard/organizer');
+        if(!myOrg){
+            const resData = await addOrganization(orgData);
+            if (resData.insertedId) {
+                toast.success('Organization added successfully');
+                redirect('/dashboard/organizer');
+
+            } 
+        }
+        else {
+            const updatedRes = await updateOrg(orgData, myOrg._id)
+            if (updatedRes.modifiedCount > 0) {
+                toast.success("Org Profile updated")
+            }
 
         }
-        // console.log(resData);
+ 
+        
     }
 
     return (
