@@ -49,7 +49,8 @@ const AddEventPage = () => {
         const updateData = {
             ...data,
             banner: imageUrl,
-            organizationEmail: session.user.email
+            organizationEmail: session.user.email,
+            
         }
 
         const result = await addEvent(updateData)

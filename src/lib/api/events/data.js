@@ -4,3 +4,9 @@ import { serverFetch } from "../server";
     const result = await serverFetch(`/api/events/${email}`);
     return result;
 };
+
+
+export const fetchEvents = async () => {
+    const result = await serverFetch(`/api/events`);
+    return result;
+};

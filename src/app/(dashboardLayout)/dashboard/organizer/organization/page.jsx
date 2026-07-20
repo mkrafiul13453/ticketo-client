@@ -12,7 +12,10 @@ import { FaImage } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 const Organization = () => {
-    const { data: session } = useSession();
+    
+    const { data: session } = useSession(); 
+
+    
     const [myOrg ,setMyOrg] = useState(null);
     const { register, handleSubmit, formState: { errors } } = useForm();
     console.log(errors);

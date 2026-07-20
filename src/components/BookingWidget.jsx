@@ -38,7 +38,7 @@ export default function BookingWidget({ ticketPrice = 49.99, availableSeats = 12
             <Input
               type="number"
               label="Quantity"
-              labelPlacement="outside"
+              labelplacement="outside"
               placeholder="1"
               min={1}
               max={availableSeats}

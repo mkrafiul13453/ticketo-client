@@ -21,7 +21,7 @@ export default function FilterPanel() {
           <Input
             id="search-title"
             placeholder="Search keyword..."
-            startContent={<FaSearch className="text-pink-500 text-sm mr-1" />}
+            startcontent={<FaSearch className="text-pink-500 text-sm mr-1" />}
             variant="bordered"
             className="w-full bg-slate-900/60 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-pink-500 hover:border-white/20 text-white text-sm cursor-pointer h-12 flex items-center transition-all duration-300"
           />
@@ -75,7 +75,7 @@ export default function FilterPanel() {
         <div className="flex gap-3 w-full">
           <Button
             className="flex-grow bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 text-white font-bold h-12 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 hover:scale-[1.02] active:scale-95 transition-all duration-200"
-            startContent={<FaSlidersH size={13} />}
+            startcontent={<FaSlidersH size={13} />}
           >
             Apply Filters
           </Button>
