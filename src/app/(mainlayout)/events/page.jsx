@@ -2,13 +2,30 @@ import EventCard from '@/components/EventCard';
 import FilterPanel from '@/components/FilterPanel';
 import { fetchEvents } from '@/lib/api/events/data';
 import { Card } from '@heroui/react';
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 
-const BrowsEventsPage = async () => {
-    const events = await fetchEvents();
-    console.log(events);
+const BrowsEventsPage = async ({searchParams}) => {
+    const sParams = await searchParams;
+    console.log(sParams);
+    const search = sParams.search || "";
+    const category = sParams.category || "";
+    const location = sParams.location || "";
+    const params = new URLSearchParams();
+    if (search) {
+        params.set("search", search);
+    }
+    if (category) {
+        params.set("category", category);
+    }
+    if (location) {
+        params.set("location", location);
+    }
+    // console.log(params.toString());
+
+    const events = await fetchEvents(params);
 
     return (
+      
         <div className="min-h-screen py-16 px-6 max-w-7xl mx-auto w-full space-y-12">
             {/* HEADER */}
             <div className="text-center md:text-left space-y-2">

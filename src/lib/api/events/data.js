@@ -6,7 +6,7 @@ import { serverFetch } from "../server";
 };
 
 
-export const fetchEvents = async () => {
-    const result = await serverFetch(`/api/events`);
+export const fetchEvents = async (query) => {
+    const result = await serverFetch(`/api/events?${query.toString()}`);
     return result;
 };
