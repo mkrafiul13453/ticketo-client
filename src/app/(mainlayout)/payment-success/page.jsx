@@ -19,7 +19,7 @@ export default async function PremiumSuccess({ searchParams }) {
     })
     // console.log(session);
     const paymentData = { amount: session?.metadata?.amount, eventId: session?.metadata?.eventId, eventTitle: session?.metadata?.eventTitle, quantity: session?.metadata?.quantity, email: session?.metadata?.email, paymentType: "booking", transactionId: session?.payment_intent?.id, paymentStatus: session?.payment_status }
-    console.log(paymentData);
+    // console.log(paymentData);
 
     
 
@@ -29,15 +29,15 @@ export default async function PremiumSuccess({ searchParams }) {
 
     // if (status === 'complete') {
 
-    //     const res = await fetch(`${baseUrl}/api/events/payments`,{
-    //         method:"PATCH",
-    //         headers:{
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({})
-    //     })
-    //     const data = await res.json()
-    //     console.log(data);
+    const res = await fetch(`${baseUrl}/api/events/booking`,{
+            method:"POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(paymentData)
+        })
+        const data = await res.json()
+        console.log(data);
 
 
 
