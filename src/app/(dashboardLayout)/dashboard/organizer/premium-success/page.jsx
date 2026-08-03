@@ -1,6 +1,7 @@
 import { baseUrl } from '@/lib/api/baseUrl';
 import { stripe } from '@/lib/stripe';
 import { Button, Card, CardFooter, CardHeader, Spinner } from '@heroui/react';
+import { custom } from 'better-auth';
 import { redirect } from 'next/navigation'
 import { FaArrowRight, FaCheckCircle, FaCrown, FaExclamationTriangle } from 'react-icons/fa';
 
@@ -14,26 +15,28 @@ export default async function premiumSuccess({ searchParams }) {
     if (!session_id)
         throw new Error('Please provide a valid session_id (`cs_test_...`)')
 
-    const {
-        status,
-        customer_details: { email: customerEmail }
-    } = await stripe.checkout.sessions.retrieve(session_id, {
+    const session = await stripe.checkout.sessions.retrieve(session_id, {
         expand: ['line_items', 'payment_intent']
     })
-    console.log(status);
-    
+    console.log(session);
 
-    if (status === 'open') {
-        return redirect('/')
+
+    
+    const paymentData = {
+        userEmail: session?.customer_email,
+        transactionId: session?.subscription,
+        paymentStatus: session?.payment_status,
+        paymentType: "subscription",
+        amount: session?.amount_total / 100
     }
 
-    if (status === 'complete') {
-
-        const res = await fetch(`${baseUrl}/api/users/upgrade-premium/${customerEmail}`,{
+        console.log(paymentData);
+    const res = await fetch(`${baseUrl}/api/users/upgrade-premium/${session?.customer_email}`,{
             method:"PATCH",
             headers:{
                 "Content-Type": "application/json"
             },
+            body: JSON.stringify(paymentData)
         })
         const data = await res.json()
         console.log(data);
@@ -81,7 +84,7 @@ export default async function premiumSuccess({ searchParams }) {
                                         Upgrade Successful!
                                     </h1>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        {customerEmail} is now a Premium Organizer.
+                                    {session?.customer_email} is now a Premium Organizer.
                                     </p>
                                 </CardHeader>
 
@@ -111,5 +114,5 @@ export default async function premiumSuccess({ searchParams }) {
                     </Card>
                 </div>
         )
-    }
+    
 }

@@ -46,7 +46,7 @@ export async function POST(req) {
                 quantity: body?.quantity,
             };
         }
-        const successUrl = type == "subscription" ? `${origin}/dashboard/payment-success?session_id={CHECKOUT_SESSION_ID}` : `${origin}/payment-success?session_id={CHECKOUT_SESSION_ID}`;
+        const successUrl = type == "subscription" ? `${origin}/dashboard/organizer/premium-success?session_id={CHECKOUT_SESSION_ID}` : `${origin}/payment-success?session_id={CHECKOUT_SESSION_ID}`;
 
 
         // Create Checkout Sessions from body params.
