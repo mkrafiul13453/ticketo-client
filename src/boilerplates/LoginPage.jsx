@@ -48,7 +48,7 @@ export default function LoginPage() {
 
                         <Button
                             type="submit"
-                            className="w-full bg-gradient-to-r from-pink-500 to-indigo-600 text-white font-bold h-12 shadow-lg shadow-pink-500/10 hover:shadow-pink-500/20"
+                            className="w-full bg-gradient-to-r from-amber-500 to-rose-500 text-white font-bold h-12 shadow-lg shadow-rose-500/10 hover:shadow-rose-500/20"
                             radius="lg"
                         >
                             Sign In

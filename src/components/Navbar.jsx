@@ -15,7 +15,7 @@ import Image from "next/image";
 export default function Navbar() {
   const router = useRouter();
   const { data: session } = useSession();
-  // console.log(session?.user);
+  console.log(session?.user);
 
 
 
@@ -67,7 +67,7 @@ export default function Navbar() {
             href="/events"
             className={`text-sm font-medium transition-colors ${pathname.startsWith("/events") ? "text-pink-500 font-semibold" : "text-slate-300 hover:text-white"}`}
           >
-            Browse Events
+            Books
           </Link>
           {session && session?.user && (
             <Link
@@ -94,7 +94,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/register"
-                className="inline-flex items-center justify-center font-semibold text-xs bg-gradient-to-r from-pink-500 to-indigo-600 text-white shadow-lg shadow-pink-500/10 hover:shadow-pink-500/20 transition h-9 px-4 rounded-xl"
+                className="inline-flex items-center justify-center font-semibold text-xs bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-lg shadow-pink-500/10 hover:shadow-pink-500/20 transition h-9 px-4 rounded-xl"
               >
                 Sign Up
               </Link>
