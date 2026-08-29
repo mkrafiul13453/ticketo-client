@@ -8,7 +8,7 @@ const Logo = () => {
                 <FaBookOpen className="text-xl" />
             </div>
             <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-white via-amber-200 to-rose-500 bg-clip-text text-transparent">
-                Ticketo
+                Bookora
             </span>
         </Link>
     );

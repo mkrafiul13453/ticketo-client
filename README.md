@@ -1,19 +1,19 @@
-# Ticketo 🎟️
+# Bookora 📚
 
-A full-stack Event Ticket Booking & Management Platform where organizers can create events, attendees can purchase tickets securely, and admins can moderate the platform.
+A full-stack **Online Book Selling & Management Platform** where customers can browse and purchase books, sellers can manage their books and orders, and admins can manage users, products, and the overall platform.
 
 ## 📋 Project Requirements
 
 **Requirement Document:**
 
-https://docs.google.com/document/d/1BHW20BQy6gArwIcOpgWjYrqbcJ4rm-tgvXgFJ1pO0CQ/edit?usp=sharing
+[Add your requirement document link here]
 
 ---
 
 ## 🚀 Clone Starter Branch
 
 ```bash
-git clone -b starter https://github.com/NS-Sheam/ticketo-client.git
+git clone -b starter YOUR_REPOSITORY_URL
 ```
 
 ## 🚀 Getting Started
@@ -42,12 +42,16 @@ in your browser to view the application.
 
 # 🎯 Project Overview
 
-Ticketo is a role-based event management and ticketing platform that enables organizers to create and manage events, attendees to book tickets securely using Stripe, and admins to oversee platform operations.
+**Bookora** is a role-based online book-selling platform that provides a complete solution for discovering, purchasing, and managing books online.
+
+Customers can browse books, search and filter products, add books to their cart, and securely purchase them through an online payment system.
+
+Sellers can manage their books, inventory, orders, and sales, while admins can oversee users, books, orders, payments, and the overall platform.
 
 ### System Roles
 
-- Attendee
-- Organizer
+- Customer
+- Seller
 - Admin
 
 ---
@@ -72,84 +76,185 @@ Ticketo is a role-based event management and ticketing platform that enables org
 
 ---
 
-## 🏢 Organization Management
+# 🏪 Seller & Store Management
 
-Organizers can:
+Sellers can:
 
-- Create organization profiles
-- Upload logos
-- Add organization websites
-- Manage organization details
-
----
-
-## 🎫 Event Management
-
-Features include:
-
-- Create Events
-- Update Events
-- Delete Events
-- Event Approval Workflow
-
-Event Information:
-
-- Title
-- Banner
-- Category
-- Location
-- Date
-- Ticket Price
-- Available Seats
-- Description
-
-Event Status:
-
-- Pending
-- Approved
-- Rejected
+- Create seller/store profiles
+- Upload store logos
+- Add store websites
+- Add store descriptions
+- Manage store information
+- Manage books
+- Manage inventory
+- Manage customer orders
+- Track sales and revenue
 
 ---
 
-## 💳 Ticket Booking System
+# 📚 Book Management
 
-Attendees can:
+Sellers/Admins can:
 
-- Browse Events
-- View Event Details
-- Select Ticket Quantity
-- Purchase Tickets via Stripe
+- Add Books
+- Update Books
+- Delete Books
+- Manage Book Inventory
+- Update Book Prices
+- Manage Book Categories
+- Upload Book Covers
 
-Booking Flow:
+### Book Information
+
+Each book can contain:
+
+```js
+title;
+coverImage;
+author;
+category;
+isbn;
+price;
+discountPrice;
+stock;
+description;
+publisher;
+publicationDate;
+sellerEmail;
+status;
+createdAt;
+```
+
+### Book Status
+
+- Available
+- Out of Stock
+- Draft
+- Published
+- Unpublished
+
+---
+
+# 🛒 Shopping Cart System
+
+Customers can:
+
+- Add books to cart
+- Remove books from cart
+- Increase/decrease quantity
+- View cart subtotal
+- View total price
+- Continue shopping
+- Proceed to checkout
+
+### Cart Flow
 
 ```text
-Select Event
+Browse Books
       ↓
-Create Booking
+View Book Details
       ↓
-Stripe Checkout
+Add to Cart
       ↓
-Payment Success
+Review Cart
       ↓
-Verification
+Checkout
       ↓
-Booking Stored
+Payment
+      ↓
+Order Confirmation
 ```
 
 ---
 
-## ⭐ Premium Upgrade System
+# 📦 Order Management
 
-Organizers can upgrade to Premium for a one-time payment.
+Customers can:
 
-Premium Benefits:
+- Place orders
+- View order history
+- View order details
+- Track order status
+- Cancel eligible orders
+- View payment information
 
-- Remove Event Creation Limits
-- Access Advanced Organizer Features
+Sellers can:
 
-Payment Gateway:
+- View customer orders
+- Update order status
+- Manage order fulfillment
+- View sales information
 
-- Stripe
+### Order Status
+
+```text
+Pending
+   ↓
+Confirmed
+   ↓
+Processing
+   ↓
+Shipped
+   ↓
+Delivered
+```
+
+Orders may also be marked as:
+
+- Cancelled
+- Failed
+
+---
+
+# 💳 Payment System
+
+Customers can securely purchase books using **Stripe**.
+
+### Payment Features
+
+- Stripe Checkout Session
+- Secure Online Payment
+- Payment Verification
+- Transaction Tracking
+- Order Creation After Successful Payment
+- Payment History
+
+### Payment Flow
+
+```text
+Add Books to Cart
+       ↓
+Checkout
+       ↓
+Create Payment Session
+       ↓
+Stripe Checkout
+       ↓
+Payment Success
+       ↓
+Payment Verification
+       ↓
+Create Order
+       ↓
+Update Inventory
+       ↓
+Order Confirmation
+```
+
+---
+
+# ⭐ Featured Books
+
+The platform can highlight popular and recommended books.
+
+Featured sections may include:
+
+- Best Selling Books
+- New Arrivals
+- Popular Books
+- Recommended Books
+- Discounted Books
+- Featured Authors
 
 ---
 
@@ -157,97 +262,209 @@ Payment Gateway:
 
 ## Home Page
 
+The homepage includes:
+
 - Hero Banner
-- Featured Events
-- Featured Organizations
+- Featured Books
+- Best Selling Books
+- New Arrivals
+- Popular Categories
+- Featured Authors
 - Statistics Section
+- Customer Reviews
 - Framer Motion Animations
 
-## Events Page
+---
 
-- Event Listing
-- Search by Title
-- Filter by Category
-- Filter by Location
-- Pagination
+## 📚 Books Page
 
-## Event Details Page
+Customers can:
 
-- Full Event Information
-- Ticket Purchase Interface
-- Pricing Information
-- Availability Status
+- Browse all books
+- Search books by title
+- Search books by author
+- Filter by category
+- Filter by price
+- Filter by availability
+- Sort books
+- Navigate through pagination
+
+---
+
+## 📖 Book Details Page
+
+Each book details page contains:
+
+- Book Cover
+- Book Title
+- Author
+- Category
+- ISBN
+- Price
+- Discount Price
+- Stock Availability
+- Description
+- Publisher
+- Publication Date
+- Seller Information
+- Add to Cart Button
+- Buy Now Button
+
+---
+
+## 🛍️ Cart Page
+
+The cart page includes:
+
+- Selected Books
+- Book Quantities
+- Individual Prices
+- Subtotal
+- Total Amount
+- Remove Item
+- Update Quantity
+- Checkout Button
+
+---
+
+## 💰 Checkout Page
+
+Customers can provide:
+
+- Name
+- Email
+- Phone Number
+- Delivery Address
+- City
+- Postal Code
+
+The checkout page displays:
+
+- Order Summary
+- Selected Books
+- Quantity
+- Subtotal
+- Delivery Charge
+- Total Amount
+- Payment Method
 
 ---
 
 # 📊 Dashboard Features
 
-## Attendee Dashboard
+## 👤 Customer Dashboard
+
+Customers can access:
 
 - Overview Statistics
 - Profile Management
-- Booking History
+- Order History
 - Payment History
-- Upcoming Events
-
-## Organizer Dashboard
-
-- Revenue Overview
-- Organization Settings
-- Add Event
-- Manage Events
-- Booking Management
-
-## Admin Dashboard
-
-- Platform Analytics
-- User Management
-- Event Moderation
-- Transaction Monitoring
-- System Overview
+- Upcoming Deliveries
+- Purchased Books
+- Account Settings
 
 ---
 
-# 💰 Payment System
+## 🏪 Seller Dashboard
 
-## Event Ticket Payments
+Sellers can access:
 
-- Stripe Checkout Session
-- Secure Payment Flow
-- Payment Verification
-- Booking Storage
+- Revenue Overview
+- Sales Statistics
+- Store Settings
+- Add Book
+- Manage Books
+- Inventory Management
+- Order Management
+- Customer Orders
+- Payment Information
 
-## Premium Upgrade Payments
+---
 
-- Stripe Integration
-- Payment Verification
-- Premium Status Activation
+## 👨‍💼 Admin Dashboard
+
+Admins can access:
+
+- Platform Analytics
+- User Management
+- Seller Management
+- Book Management
+- Category Management
+- Order Management
+- Transaction Monitoring
+- Inventory Monitoring
+- Block/Unblock Users
+- System Overview
 
 ---
 
 # 🔍 Search & Filtering
 
-### Search
+## Search
 
-- Event Title Search using MongoDB Regex
+Users can search books using:
 
-### Filters
+- Book Title
+- Author Name
+- ISBN
 
-- Category Filter
-- Location Filter
+Example:
 
-### Pagination
+```js
+title: { $regex: search, $options: "i" }
+```
 
-Server-side pagination using:
+---
+
+## Filters
+
+Users can filter books by:
+
+- Category
+- Author
+- Price Range
+- Availability
+- Rating
+
+---
+
+## Sorting
+
+Books can be sorted by:
+
+- Price: Low to High
+- Price: High to Low
+- Newest
+- Best Selling
+- Popularity
+
+---
+
+## Pagination
+
+Server-side pagination can be implemented using:
 
 ```js
 skip();
 limit();
 ```
 
+Example:
+
+```js
+const books = await collection
+  .find(query)
+  .skip(skip)
+  .limit(limit)
+  .toArray();
+```
+
 ---
 
 # 🛡️ Security Features
+
+The platform implements several security mechanisms:
 
 - JWT Authentication
 - HTTP-only Cookies
@@ -255,12 +472,17 @@ limit();
 - Role-Based Access Control
 - Secure API Endpoints
 - Environment Variable Protection
+- Secure Stripe Payment Processing
+- Server-side Payment Verification
+- Input Validation
+- Protected Admin Routes
+- Protected Seller Routes
 
 ---
 
 # 🗄️ Database Collections
 
-### Users
+## Users
 
 ```js
 name;
@@ -268,58 +490,108 @@ email;
 image;
 role;
 isBlocked;
-isPremium;
 createdAt;
 ```
 
-### Organizations
+---
+
+## Sellers
 
 ```js
-organizationName;
+storeName;
 logo;
 website;
 description;
-organizerEmail;
+sellerEmail;
 status;
+createdAt;
 ```
 
-### Events
+---
+
+## Books
 
 ```js
 title;
-banner;
+coverImage;
+author;
 category;
-location;
-date;
-ticketPrice;
-availableSeats;
+isbn;
+price;
+discountPrice;
+stock;
 description;
+publisher;
+publicationDate;
+sellerEmail;
 status;
-organizationId;
-organizerEmail;
+createdAt;
 ```
 
-### Bookings
+---
+
+## Cart
 
 ```js
-eventId;
-eventTitle;
-attendeeEmail;
-quantity;
-amount;
-paymentStatus;
-transactionId;
-bookingDate;
+userEmail;
+items;
+totalAmount;
+updatedAt;
 ```
 
-### Payments
+Example:
+
+```js
+items: [
+  {
+    bookId;
+    title;
+    price;
+    quantity;
+    coverImage;
+  }
+]
+```
+
+---
+
+## Orders
+
+```js
+orderId;
+customerEmail;
+items;
+totalAmount;
+shippingAddress;
+paymentStatus;
+orderStatus;
+transactionId;
+orderDate;
+```
+
+---
+
+## Payments
 
 ```js
 userEmail;
 amount;
 transactionId;
 paymentStatus;
+paymentMethod;
 paidAt;
+```
+
+---
+
+## Categories
+
+```js
+name;
+description;
+image;
+status;
+createdAt;
 ```
 
 ---
@@ -335,50 +607,220 @@ Role Assignment
  ↓
 Dashboard Routing
  ↓
-Organization Creation
+Browse Books
  ↓
-Event Creation
+Search / Filter
  ↓
-Attendee Browsing
+View Book Details
  ↓
-Ticket Booking
+Add to Cart
+ ↓
+Checkout
  ↓
 Stripe Payment
  ↓
-Verification
+Payment Verification
  ↓
-Bookings & Payments Storage
+Order Creation
  ↓
-Admin Moderation
+Inventory Update
+ ↓
+Order Processing
+ ↓
+Book Delivery
+ ↓
+Admin Management
 ```
 
 ---
 
-## 🛠️ Tech Stack
+# 🧑‍💻 User Flow
 
-### Frontend
+## Customer
+
+```text
+Register / Login
+      ↓
+Browse Books
+      ↓
+Search / Filter
+      ↓
+View Book
+      ↓
+Add to Cart
+      ↓
+Checkout
+      ↓
+Make Payment
+      ↓
+Order Confirmation
+      ↓
+Track Order
+```
+
+---
+
+## Seller
+
+```text
+Login
+ ↓
+Create Store
+ ↓
+Add Books
+ ↓
+Manage Inventory
+ ↓
+Receive Orders
+ ↓
+Process Orders
+ ↓
+Update Order Status
+ ↓
+Track Revenue
+```
+
+---
+
+## Admin
+
+```text
+Login
+ ↓
+Admin Dashboard
+ ↓
+Manage Users
+ ↓
+Manage Sellers
+ ↓
+Manage Books
+ ↓
+Manage Categories
+ ↓
+Monitor Orders
+ ↓
+Monitor Payments
+ ↓
+Platform Analytics
+```
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
 
 - Next.js
 - React
 - Tailwind CSS
 - Framer Motion
 
-### Backend
+## Backend
 
 - Node.js
 - Express.js
 - MongoDB
+- Mongoose
 
-### Authentication
+## Authentication
 
 - BetterAuth
+- JWT
 
-### Payments
+## Payment
 
 - Stripe
 
+## Database
+
+- MongoDB Atlas
+
 ---
 
-## 📄 License
+# 📁 Suggested Project Structure
 
-This project is created for educational and portfolio purposes.
+```text
+bookora/
+│
+├── app/
+│   ├── page.jsx
+│   ├── books/
+│   ├── cart/
+│   ├── checkout/
+│   ├── dashboard/
+│   │   ├── customer/
+│   │   ├── seller/
+│   │   └── admin/
+│   │
+│   └── api/
+│
+├── components/
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── BookCard.jsx
+│   ├── CartItem.jsx
+│   └── ...
+│
+├── lib/
+│   ├── mongodb.js
+│   ├── auth.js
+│   └── stripe.js
+│
+├── models/
+│   ├── User.js
+│   ├── Book.js
+│   ├── Order.js
+│   └── Payment.js
+│
+├── public/
+│
+├── .env.local
+├── package.json
+└── README.md
+```
+
+---
+
+# ⚙️ Environment Variables
+
+Create a `.env.local` file and configure the required environment variables:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+
+BETTER_AUTH_SECRET=your_auth_secret
+
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+STRIPE_SECRET_KEY=your_stripe_secret_key
+
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+```
+
+> Never expose secret keys or sensitive credentials in your source code or GitHub repository.
+
+---
+
+# 📈 Future Improvements
+
+Possible future features include:
+
+- Book Reviews & Ratings
+- Wishlist
+- Coupon System
+- Multiple Payment Methods
+- Delivery Tracking
+- Email Notifications
+- Invoice Generation
+- Recommendation System
+- Author Profiles
+- Publisher Profiles
+- Book Rental System
+- AI-Based Book Recommendations
+- Advanced Sales Analytics
+
+---
+
+# 📄 License
+
+This project is created for **educational and portfolio purposes**.
